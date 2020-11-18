@@ -801,4 +801,7 @@
   <data name="ClassificationAltLocation" xml:space="preserve">
     <value>Location of the documentation (usually URL)</value>
   </data>
+  <data name="DoorBelongsToRoom" xml:space="preserve">
+    <value>Relate doors to rooms</value>
+  </data>
 </root>

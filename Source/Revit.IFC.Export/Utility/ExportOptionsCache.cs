@@ -198,6 +198,8 @@ namespace Revit.IFC.Export.Utility
          bool? includeSteelElements = OptionsUtil.GetNamedBooleanOption(options, "IncludeSteelElements");
          cache.IncludeSteelElements = includeSteelElements.HasValue && includeSteelElements.Value;
 
+         cache.DoorBelongsToRoom = OptionsUtil.GetNamedBooleanOption(options, "DoorBelongsToRoom");
+
          // There is a bug in the native code that doesn't allow us to cast the filterView to any sub-type of View.  Work around this by re-getting the element pointer.
          if (filterView != null)
             cache.FilterViewForExport = filterView.Document.GetElement(filterView.Id) as View;
@@ -462,6 +464,8 @@ namespace Revit.IFC.Export.Utility
             }
          }
       }
+
+      public bool? DoorBelongsToRoom { get; set; }
 
       /// <summary>
       /// The property set options.
