@@ -13,7 +13,7 @@
 // Lesser General Public License for more details.
 //
 // You should have received a copy of the GNU Lesser General Public
-// License along with this library; if not, write to the Free Software
+// License along with this library; if not, write to the Free Software releated
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 using System;
 using System.Collections.Generic;
@@ -3722,6 +3722,19 @@ namespace Revit.IFC.Export.Exporter
             // We may get stale handles in here; protect against this.
             HashSet<IFCAnyHandle> relatedProducts = RemoveContainedHandlesFromSet(relatedProductsToCheck);
             HashSet<IFCAnyHandle> relatedElements = RemoveContainedHandlesFromSet(relatedElementsToCheck);
+
+            // ------------------------------------------------------------------------------
+            // Jo64
+            if (ExporterCacheManager.ExportOptionsCache.DoorBelongsToRoom.GetValueOrDefault())
+            {
+               var n = relatedElements.RemoveWhere
+               (
+                   //item => item.TypeName.Equals("IfcDoor", StringComparison.OrdinalIgnoreCase)
+                   //&&
+                   item => ExporterCacheManager.DoorBelongsToRoomCache.Contains(item)
+               );
+            }
+            // ------------------------------------------------------------------------------
 
             // skip coincident levels, if any.
             for (int jj = ii + 1; jj < nextLevelIdx; jj++)

@@ -243,6 +243,8 @@ namespace BIM.IFC.Export.UI
       /// </summary>
       public string COBieProjectInfo { get; set; } = "";
 
+      public bool DoorBelongsToRoom { get; set; } = false;
+
       /// <summary>
       /// Value indicating whether steel elements should be exported.
       /// </summary>
@@ -390,6 +392,7 @@ namespace BIM.IFC.Export.UI
          configuration.TessellationLevelOfDetail = 0.5;
          configuration.UseOnlyTriangulation = false;
          configuration.StoreIFCGUID = false;
+         configuration.DoorBelongsToRoom = false;
          configuration.m_isBuiltIn = true;
          configuration.m_isInSession = false;
          configuration.ActivePhaseId = ElementId.InvalidElementId;
@@ -495,6 +498,7 @@ namespace BIM.IFC.Export.UI
          options.AddOption("SitePlacement", SitePlacement.ToString());
          options.AddOption("TessellationLevelOfDetail", TessellationLevelOfDetail.ToString());
          options.AddOption("UseOnlyTriangulation", UseOnlyTriangulation.ToString());
+         options.AddOption("DoorBelongsToRoom", DoorBelongsToRoom.ToString());
          options.AddOption("ActiveViewId", ActiveViewId.ToString());
          options.AddOption("StoreIFCGUID", StoreIFCGUID.ToString());
 
