@@ -243,6 +243,8 @@ namespace BIM.IFC.Export.UI
       /// </summary>
       public string COBieProjectInfo { get; set; } = "";
 
+      public bool DoorBelongsToRoom { get; set; } = false;
+
       /// <summary>
       /// Value indicating whether steel elements should be exported.
       /// </summary>
@@ -390,6 +392,7 @@ namespace BIM.IFC.Export.UI
          configuration.TessellationLevelOfDetail = 0.5;
          configuration.UseOnlyTriangulation = false;
          configuration.StoreIFCGUID = false;
+         configuration.DoorBelongsToRoom = false;
          configuration.m_isBuiltIn = true;
          configuration.m_isInSession = false;
          configuration.ActivePhaseId = ElementId.InvalidElementId;
@@ -414,7 +417,7 @@ namespace BIM.IFC.Export.UI
          // just need a shallow copy
          return (IFCExportConfiguration)MemberwiseClone();
       }
-      
+
       /// <summary>
       /// Duplicates this configuration by giving a new name.
       /// </summary>
@@ -495,6 +498,7 @@ namespace BIM.IFC.Export.UI
          options.AddOption("SitePlacement", SitePlacement.ToString());
          options.AddOption("TessellationLevelOfDetail", TessellationLevelOfDetail.ToString());
          options.AddOption("UseOnlyTriangulation", UseOnlyTriangulation.ToString());
+         options.AddOption("DoorBelongsToRoom", DoorBelongsToRoom.ToString());
          options.AddOption("ActiveViewId", ActiveViewId.ToString());
          options.AddOption("StoreIFCGUID", StoreIFCGUID.ToString());
 
@@ -520,7 +524,7 @@ namespace BIM.IFC.Export.UI
          options.AddOption("UseVisibleRevitNameAsEntityName", UseVisibleRevitNameAsEntityName.ToString());
 
          // Add CRS information
-         options.AddOption("GeoRefCRSName", GeoRefCRSName != null? GeoRefCRSName : "");
+         options.AddOption("GeoRefCRSName", GeoRefCRSName != null ? GeoRefCRSName : "");
          options.AddOption("GeoRefCRSDesc", GeoRefCRSDesc != null ? GeoRefCRSDesc : "");
          options.AddOption("GeoRefEPSGCode", GeoRefEPSGCode != null ? GeoRefEPSGCode : "");
          options.AddOption("GeoRefGeodeticDatum", GeoRefGeodeticDatum != null ? GeoRefGeodeticDatum : "");
@@ -632,7 +636,7 @@ namespace BIM.IFC.Export.UI
          // Create the instance to deserialize into.
          IFCExportConfiguration config = IFCExportConfiguration.CreateDefaultConfiguration();
          config.DeserializeFromJson(dictionary, serializer);
-         return config; 
+         return config;
       }
    }
 }

@@ -790,4 +790,7 @@
   <data name="UseOnlyTriangulation" xml:space="preserve">
     <value>Garder la tessellation de la géométrie en tant que triangulation</value>
   </data>
+  <data name="DoorBelongsToRoom" xml:space="preserve">
+    <value>Relate doors to rooms</value>
+  </data>
 </root>
