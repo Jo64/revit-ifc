@@ -6093,34 +6093,42 @@ namespace Revit.IFC.Export.Toolkit
          IFCAnyHandle door = CreateInstance(exporterIFC.GetFile(), IFCEntityType.IfcDoor, element);
          IFCAnyHandleUtil.SetAttribute(door, "OverallHeight", overallHeight);
          IFCAnyHandleUtil.SetAttribute(door, "OverallWidth", overallWidth);
+
          // ------------------------------------------------------------------------------
          // Jo64
          if (ExporterCacheManager.ExportOptionsCache.DoorBelongsToRoom.GetValueOrDefault())
          {
             var familyInstance = element as FamilyInstance;
-            if (familyInstance != null)
+            var phase = ExporterCacheManager.ExportOptionsCache.ActivePhaseElement;
+            if (familyInstance != null && phase != null)
             {
-               ElementId roomId;
-
-               var toRoomId = ((FamilyInstance)element).ToRoom?.Id;
-               if (toRoomId != null)
-                  roomId = toRoomId;
-               else
-                  roomId = ((FamilyInstance)element).Room?.Id;
-
-               //var fromRoomId = ((FamilyInstance)element).FromRoom?.Id;
-               if (roomId != null)
+               try
                {
-                  bool containedInSpace = (roomId != ElementId.InvalidElementId);
+                  ElementId roomId = ElementId.InvalidElementId;
+                  //var toRoomId = familyInstance.ToRoom?.Id;
+                  var toRoomId = familyInstance.get_ToRoom(phase)?.Id;
+                  if (toRoomId != null && toRoomId != ElementId.InvalidElementId)
+                  {
+                     roomId = toRoomId;
+                  }
+                  else
+                  {
+                     //roomId = familyInstance.Room?.Id;
+                     roomId = familyInstance.get_Room(phase)?.Id;
+                  }
+
+                  bool containedInSpace = roomId != null && roomId != ElementId.InvalidElementId;
                   if (containedInSpace)
                   {
                      ExporterCacheManager.DoorBelongsToRoomCache.Add(door);
                      ExporterCacheManager.SpaceInfoCache.RelateToSpace(roomId, door);
                   }
                }
+               catch { }
             }
          }
          // ------------------------------------------------------------------------------
+
          if (ExporterCacheManager.ExportOptionsCache.ExportAs4)
          {
             string validatedPreDefinedType = IFCValidateEntry.ValidateStrEnum<IFC4.IFCDoorType>(preDefinedType);
