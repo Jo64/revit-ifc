@@ -795,4 +795,7 @@
   <data name="ER_StructuralShort" xml:space="preserve">
     <value>Structural</value>
   </data>
+	<data name="DoorBelongsToRoom" xml:space="preserve">
+    <value>Türen zu Räumen zuordnen</value>
+  </data>
 </root>

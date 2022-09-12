@@ -1511,7 +1511,6 @@ namespace BIM.IFC.Export.UI
          configuration.UseOnlyTriangulation = false;
       }
 
-
       private void checkboxIncludeSteelElements_Checked(object sender, RoutedEventArgs e)
       {
          IFCExportConfiguration configuration = GetSelectedConfiguration();
@@ -1523,6 +1522,19 @@ namespace BIM.IFC.Export.UI
          IFCExportConfiguration configuration = GetSelectedConfiguration();
          configuration.IncludeSteelElements = false;
       }
+
+      private void CheckBox_DoorBelongsToRoom_Checked(object sender, RoutedEventArgs e)
+      {
+         IFCExportConfiguration configuration = GetSelectedConfiguration();
+         configuration.DoorBelongsToRoom = true;
+      }
+      private void CheckBox_DoorBelongsToRoom_Unchecked(object sender, RoutedEventArgs e)
+      {
+         IFCExportConfiguration configuration = GetSelectedConfiguration();
+         configuration.DoorBelongsToRoom = false;
+      }
+
+
 
       private void Checkbox_UseTypeNameOnly_Checked(object sender, RoutedEventArgs e)
       {

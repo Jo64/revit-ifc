@@ -799,4 +799,7 @@
   <data name="ER_StructuralShort" xml:space="preserve">
     <value>Structural</value>
   </data>
+	<data name="DoorBelongsToRoom" xml:space="preserve">
+    <value>Relate doors to rooms</value>
+  </data>
 </root>

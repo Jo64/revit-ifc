@@ -3971,6 +3971,20 @@ namespace Revit.IFC.Export.Exporter
             HashSet<IFCAnyHandle> relatedProducts = productsAndElements.Item1;
             HashSet<IFCAnyHandle> relatedElements = productsAndElements.Item2;
 
+
+            // ------------------------------------------------------------------------------
+            // Jo64
+            if (ExporterCacheManager.ExportOptionsCache.DoorBelongsToRoom.GetValueOrDefault())
+            {
+               var n = relatedElements.RemoveWhere
+               (
+                   //item => item.TypeName.Equals("IfcDoor", StringComparison.OrdinalIgnoreCase)
+                   //&&
+                   item => ExporterCacheManager.DoorBelongsToRoomCache.Contains(item)
+               );
+            }
+            // ------------------------------------------------------------------------------
+
             if (relatedProducts.Count == 0 && relatedElements.Count == 0 && !AlwaysExportLevel(level))
             {
                IFCAnyHandleUtil.Delete(levelInfo.GetBuildingStorey());

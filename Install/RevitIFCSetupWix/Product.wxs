@@ -132,12 +132,12 @@
             </Component>
          <?endif?>
 
-         <Component Id = "SteelCon_ASIFC_DLL" Guid="449A672A-2500-4BE7-AAFE-6751B84A77A4">
+         <!--<Component Id = "SteelCon_ASIFC_DLL" Guid="449A672A-2500-4BE7-AAFE-6751B84A77A4">
             <File Id ="FILE_SteelCon_ASIFC_DLL" Name="Autodesk.SteelConnections.ASIFC.dll" Source="$(var.ProjectDir)..\Program Files to Install\Autodesk.SteelConnections.ASIFC.dll" KeyPath="yes" />
          </Component>
          <Component Id = "SteelCon_ASIFC_Sig" Guid="4DFE7524-0FC5-4931-809D-2F50D2C623A8">
             <File Id ="FILE_SteelCon_ASIFC_Sig" Name="Autodesk.SteelConnections.ASIFC.sig" Source="$(var.ProjectDir)..\Program Files to Install\Autodesk.SteelConnections.ASIFC.sig" KeyPath="yes" />
-         </Component>
+         </Component>-->
         
          <Component Id = "COMP_LICENSE_RTF" Guid="9F0851DD-3A43-4D49-AC8C-8B8D2F394A91">
             <File Id ="FILE_LICENSE_RTF" Name="LICENSE.rtf" Source="$(var.ProjectDir)..\Program Files to Install\LICENSE.rtf" KeyPath="yes" />

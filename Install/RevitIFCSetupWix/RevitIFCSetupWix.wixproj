@@ -73,17 +73,17 @@
       <RefProjectOutputGroups>Binaries;Content;Satellites</RefProjectOutputGroups>
       <RefTargetDir>INSTALLFOLDER</RefTargetDir>
     </ProjectReference>
-    <ProjectReference Include="..\..\Source\Revit.IFC.Import\Revit.IFC.Import.csproj">
-      <Name>Revit.IFC.Import</Name>
-      <Project>{7f987d09-9716-4f50-ade0-278e4b537101}</Project>
+    <ProjectReference Include="..\..\Source\Revit.IFC.Import.Core\Revit.IFC.Import.Core.csproj">
+      <Name>Revit.IFC.Import.Core</Name>
+      <Project>{b1e159b7-4b12-45a9-b83f-159e37798d44}</Project>
       <Private>True</Private>
       <DoNotHarvest>True</DoNotHarvest>
       <RefProjectOutputGroups>Binaries;Content;Satellites</RefProjectOutputGroups>
       <RefTargetDir>INSTALLFOLDER</RefTargetDir>
     </ProjectReference>
-    <ProjectReference Include="..\..\Source\Revit.IFC.Import.Core\Revit.IFC.Import.Core.csproj">
-      <Name>Revit.IFC.Import.Core</Name>
-      <Project>{C0B3C0DC-58EE-4876-9ACD-A0A8C82E92B4}</Project>
+    <ProjectReference Include="..\..\Source\Revit.IFC.Import\Revit.IFC.Import.csproj">
+      <Name>Revit.IFC.Import</Name>
+      <Project>{7f987d09-9716-4f50-ade0-278e4b537101}</Project>
       <Private>True</Private>
       <DoNotHarvest>True</DoNotHarvest>
       <RefProjectOutputGroups>Binaries;Content;Satellites</RefProjectOutputGroups>
