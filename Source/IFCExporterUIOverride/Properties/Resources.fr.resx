@@ -823,4 +823,7 @@
   <data name="ResetToOriginals" xml:space="preserve">
     <value>Réinitialiser</value>
   </data>
+	<data name="DoorBelongsToRoom" xml:space="preserve">
+    <value>Relate doors to rooms</value>
+  </data>
 </root>

@@ -330,6 +330,11 @@ namespace BIM.IFC.Export.UI
 
       #endregion     // COBieTab
 
+
+      // Jo64
+      public bool DoorBelongsToRoom { get; set; } = false;
+
+
       /// <summary>
       /// The name of the configuration.
       /// </summary>
