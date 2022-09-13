@@ -612,6 +612,8 @@ namespace BIM.IFC.Export.UI
 
          string uiVersion = IFCUISettings.GetAssemblyVersion();
          options.AddOption("AlternateUIVersion", uiVersion);
+
+         options.AddOption("DoorBelongsToRoom", DoorBelongsToRoom.ToString());
       }
 
 
