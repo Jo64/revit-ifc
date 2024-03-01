@@ -264,6 +264,9 @@ namespace Revit.IFC.Export.Utility
          bool? includeSteelElements = OptionsUtil.GetNamedBooleanOption(options, "IncludeSteelElements");
          cache.IncludeSteelElements = includeSteelElements.HasValue && includeSteelElements.Value;
 
+         // Jo64
+         cache.DoorBelongsToRoom = OptionsUtil.GetNamedBooleanOption(options, "DoorBelongsToRoom");
+
          if (filterView == null)
          {
             // if the filter view is null, but we have a HostViewId set, that means that we are
@@ -579,6 +582,10 @@ namespace Revit.IFC.Export.Utility
             }
          }
       }
+
+
+      // Jo64
+      public bool? DoorBelongsToRoom { get; set; }
 
       /// <summary>
       /// The property set options.
