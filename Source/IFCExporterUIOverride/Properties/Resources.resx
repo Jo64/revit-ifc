@@ -974,4 +974,7 @@
   <data name="UseVisibleRevitNameTooltip" xml:space="preserve">
     <value>Use this option to export IFC entity name as the visible Revit name.</value>
   </data>
+  <data name="DoorBelongsToRoom" xml:space="preserve">
+    <value>Relate doors to rooms</value>
+  </data>
 </root>

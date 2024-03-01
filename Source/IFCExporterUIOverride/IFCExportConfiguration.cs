@@ -637,6 +637,9 @@ namespace BIM.IFC.Export.UI
          }
 
          options.FilterViewId = VisibleElementsOfCurrentView ? filterViewId : ElementId.InvalidElementId;
+
+         // Jo64
+         options.AddOption("DoorBelongsToRoom", DoorBelongsToRoom.ToString());
       }
 
 
