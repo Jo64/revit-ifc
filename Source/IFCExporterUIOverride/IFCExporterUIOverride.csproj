@@ -140,13 +140,22 @@ $(ProjectDir)CreateAddinFile.bat $(OutDir)$(TargetName).addin $(AssemblyName).dl
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Autodesk.UI.Windows">
-      <HintPath>..\..\..\API\2025\Autodesk.UI.Windows.dll</HintPath>
+      <HintPath>C:\Program Files\Autodesk\Revit 2025\Autodesk.UI.Windows.dll</HintPath>
     </Reference>
     <Reference Include="Autodesk.Weave.Wpf">
-      <HintPath>..\..\..\API\2025\Autodesk.Weave.Wpf.dll</HintPath>
+      <HintPath>C:\Program Files\Autodesk\Revit 2025\Autodesk.Weave.Wpf.dll</HintPath>
     </Reference>
+    <Reference Include="RevitAPI">
+      <HintPath>C:\Program Files\Autodesk\Revit 2025\RevitAPI.dll</HintPath>
+    </Reference>
+    <Reference Include="RevitAPIIFC">
+      <HintPath>C:\Program Files\Autodesk\Revit 2025\RevitAPIIFC.dll</HintPath>
+    </Reference>
+    <Reference Include="RevitAPIUI">
+      <HintPath>C:\Program Files\Autodesk\Revit 2025\RevitAPIUI.dll</HintPath>
+    </Reference>    
     <Reference Include="UserInterfaceUtility">
-      <HintPath>..\..\..\API\2025\UserInterfaceUtility.dll</HintPath>
+      <HintPath>C:\Program Files\Autodesk\Revit 2025\UserInterfaceUtility.dll</HintPath>
     </Reference>
   </ItemGroup>
 </Project>
