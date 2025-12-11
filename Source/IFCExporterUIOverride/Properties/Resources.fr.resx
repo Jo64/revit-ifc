@@ -880,4 +880,7 @@
   <data name="UseVisibleRevitNameAsEntityName" xml:space="preserve">
     <value>Utiliser le nom Revit visible comme nom de l'IFCEntity</value>
   </data>
+  <data name="DoorBelongsToRoom" xml:space="preserve">
+    <value>Relate doors to rooms</value>
+  </data>  
 </root>

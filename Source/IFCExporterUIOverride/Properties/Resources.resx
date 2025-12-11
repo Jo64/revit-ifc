@@ -1343,4 +1343,7 @@
   <data name="ThermalMaterialParams" xml:space="preserve">
     <value>Thermal</value>
   </data>
+  <data name="DoorBelongsToRoom" xml:space="preserve">
+    <value>Relate doors to rooms</value>
+  </data>    
 </root>

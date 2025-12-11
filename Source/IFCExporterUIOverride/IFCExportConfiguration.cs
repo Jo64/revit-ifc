@@ -427,6 +427,10 @@ namespace BIM.IFC.Export.UI
 
       #endregion     // COBieTab
 
+      // Jo64
+      public bool DoorBelongsToRoom { get; set; } = false;
+
+
       /// <summary>
       /// The name of the configuration.
       /// </summary>
@@ -701,6 +705,9 @@ namespace BIM.IFC.Export.UI
          IFCParameterTemplate parameterTemplate = IFCParameterTemplate.GetOrCreateInSessionTemplate(IFCCommandOverrideApplication.TheDocument);
 
          options.FilterViewId = VisibleElementsOfCurrentView ? filterViewId : ElementId.InvalidElementId;
+
+         // Jo64
+         options.AddOption("DoorBelongsToRoom", DoorBelongsToRoom.ToString());
 
          // Temporary until UI is created.
          options.AddOption("ParameterMappingTableName", Resources.InSessionConfiguration);

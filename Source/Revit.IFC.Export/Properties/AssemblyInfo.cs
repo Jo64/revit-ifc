@@ -16,6 +16,7 @@ using System.Reflection;
 
 [assembly: AssemblyVersion("26.4.0.0")]
 [assembly: AssemblyFileVersion("26.4.0.0")]
+[assembly: AssemblyInformationalVersion("Forked version 26.4.0.0 from Autodesk/revit-ifc")]
 
 #endif
 
