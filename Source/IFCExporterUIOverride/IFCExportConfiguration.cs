@@ -425,6 +425,9 @@ namespace BIM.IFC.Export.UI
 
       #endregion     // COBieTab
 
+      // Jo64
+      public bool DoorBelongsToRoom { get; set; } = false;
+
       /// <summary>
       /// The name of the configuration.
       /// </summary>
@@ -670,6 +673,9 @@ namespace BIM.IFC.Export.UI
       public void UpdateOptions(IFCExportOptions options, ElementId filterViewId)
       {
          options.FilterViewId = VisibleElementsOfCurrentView ? filterViewId : ElementId.InvalidElementId;
+
+         // Jo64
+         options.AddOption("DoorBelongsToRoom", DoorBelongsToRoom.ToString());
 
          foreach (var prop in GetType().GetProperties())
          {

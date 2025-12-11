@@ -707,6 +707,15 @@ namespace BIM.IFC.Export.UI.Properties {
                 return ResourceManager.GetString("DocumentationLocation", resourceCulture);
             }
         }
+		
+        /// <summary>
+        ///   Looks up a localized string similar to Relate doors to rooms.
+        /// </summary>
+        public static string DoorBelongsToRoom {
+            get {
+                return ResourceManager.GetString("DoorBelongsToRoom", resourceCulture);
+            }
+        }		
         
         /// <summary>
         ///   Looks up a localized string similar to Eastings.

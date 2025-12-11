@@ -94,6 +94,20 @@ namespace Revit.IFC.Export.Utility
       /// </summary>
       public static IFCCertifiedEntitiesAndPSets CertifiedEntitiesAndPsetsCache { get; private set; } = new();
 
+      // ---------------------------------------------
+      // Jo64
+      static HashSet<IFCAnyHandle> m_DoorBelongsToRoomCache;
+      public static HashSet<IFCAnyHandle> DoorBelongsToRoomCache
+      {
+         get
+         {
+            if (m_DoorBelongsToRoomCache == null)
+               m_DoorBelongsToRoomCache = new HashSet<IFCAnyHandle>();
+            return m_DoorBelongsToRoomCache;
+         }
+      }
+      // ---------------------------------------------
+
       private static ClassificationCache m_ClassificationCache = null;
 
       public static ClassificationLocationCache ClassificationLocationCache { get; private set; } = new();

@@ -15,6 +15,7 @@ using System.Reflection;
 
 [assembly: AssemblyVersion("25.4.4.0")]
 [assembly: AssemblyFileVersion("25.4.4.0")]
+[assembly: AssemblyInformationalVersion("Forked version 25.4.4.0 from Autodesk/revit-ifc")]
 
 
 // Version information can now be found in Source\Foundation\RevitENU\Version.cs
