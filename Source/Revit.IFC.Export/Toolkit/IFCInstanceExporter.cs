@@ -4441,29 +4441,55 @@ namespace Revit.IFC.Export.Toolkit
          IFCAnyHandleUtil.SetAttribute(door, "OverallWidth", overallWidth);
 
          // ------------------------------------------------------------------------------
-         // Jo64
+         // Jo64 - Autodesk Revit IFC Export Problem: Türzuordnung zu Räumen berücksichtigt nicht die Export-Phase.
+         // Die Properties .ToRoom und .Room der FamilyInstance-Elemente berücksichtigen nicht die Export-Phase,
+         // was zu falschen Raumzuordnungen für Türen führen kann,
+         // da Türen in verschiedenen Phasen unterschiedliche Raumzuordnungen haben können.
          if (ExporterCacheManager.ExportOptionsCache.DoorBelongsToRoom.GetValueOrDefault())
          {
             var familyInstance = element as FamilyInstance;
             if (familyInstance != null)
             {
-               ElementId roomId;
+               // export phase
+               ElementId phaseId = ExporterCacheManager.ExportOptionsCache.ActivePhaseId;
+               Phase exportPhase = null;
 
-               var toRoomId = ((FamilyInstance)element).ToRoom?.Id;
-               if (toRoomId != null)
-                  roomId = toRoomId;
-               else
-                  roomId = ((FamilyInstance)element).Room?.Id;
-
-               //var fromRoomId = ((FamilyInstance)element).FromRoom?.Id;
-               if (roomId != null)
+               if (phaseId != ElementId.InvalidElementId)
                {
-                  bool containedInSpace = (roomId != ElementId.InvalidElementId);
-                  if (containedInSpace)
+                  exportPhase = familyInstance.Document.GetElement(phaseId) as Phase;
+               }
+
+               ElementId roomId = ElementId.InvalidElementId;
+
+               if (exportPhase != null)
+               {
+                  var toRoom = familyInstance.get_ToRoom(exportPhase);
+                  if (toRoom != null)
+                     roomId = toRoom.Id;
+                  else
                   {
-                     ExporterCacheManager.DoorBelongsToRoomCache.Add(door);
-                     ExporterCacheManager.SpaceInfoCache.RelateToSpace(roomId, door);
+                     var room = familyInstance.get_Room(exportPhase);
+                     if (room != null)
+                        roomId = room.Id;
                   }
+               }
+               else
+               {
+                  // Fallback
+                  var toRoom = familyInstance.ToRoom;
+                  if (toRoom != null)
+                     roomId = toRoom.Id;
+                  else
+                  {
+                     var room = familyInstance.Room;
+                     if (room != null)
+                        roomId = room.Id;
+                  }
+               }
+               if (roomId != null && roomId != ElementId.InvalidElementId)
+               {
+                  ExporterCacheManager.DoorBelongsToRoomCache.Add(door);
+                  ExporterCacheManager.SpaceInfoCache.RelateToSpace(roomId, door);
                }
             }
          }
