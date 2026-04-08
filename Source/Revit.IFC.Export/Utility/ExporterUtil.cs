@@ -2111,6 +2111,27 @@ namespace Revit.IFC.Export.Utility
             exportType.PredefinedType = predefType;
          }
 
+         // ----------------------------------------------------------------------
+         // Jo64 - nachschauen, ob es vielleicht alte IfcExportAs Parameter gibt
+         if (exportType.IsUnKnown && element is Autodesk.Revit.DB.FamilyInstance && element.Name == "eTASK.Workplace")
+         {
+            Element elementType = element.Document.GetElement(element.GetTypeId());
+            var param = elementType.Parameters
+                .Cast<Parameter>()
+                .FirstOrDefault(p => p.Definition.Name == "IfcExportAs");
+            symbolClassName = param?.AsString();
+            if(!String.IsNullOrEmpty(symbolClassName))
+            {
+               IFCExportInfoPair overrideExportType = ElementFilteringUtil.GetExportTypeFromClassName(symbolClassName);
+               if (!overrideExportType.IsUnKnown &&
+                  IfcSchemaEntityTree.IsSubTypeOf(ExporterCacheManager.ExportOptionsCache.FileVersion, overrideExportType.ExportInstance, restrictedGroup))
+               {
+                  exportType = overrideExportType;
+               }
+            }
+         }
+         // ----------------------------------------------------------------------
+
          return exportType;
       }
 
