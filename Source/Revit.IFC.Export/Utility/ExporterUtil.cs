@@ -1885,7 +1885,8 @@ namespace Revit.IFC.Export.Utility
 
          // ----------------------------------------------------------------------
          // Jo64 - nachschauen, ob es vielleicht alte IfcExportAs Parameter gibt
-         if (exportType.IsUnKnown && element is Autodesk.Revit.DB.FamilyInstance && element.Name == "eTASK.Workplace")
+         // FM-23929 Arbeitsplatzfamilie-Name muss mit eTASK.Workplace anfangen
+         if (exportType.IsUnKnown && element is Autodesk.Revit.DB.FamilyInstance && element.Name.StartsWith("eTASK.Workplace") == true)
          {
             Element elementType = element.Document.GetElement(element.GetTypeId());
             var param = elementType.Parameters
